@@ -27,7 +27,7 @@ const useFirebase = () => {
 
   const [error, setError] = useState("");
 
-  const [admin, setAdmin] = useState(false);
+  // const [admin, setAdmin] = useState(false);
 
   const handleGoogleLogin = () => {
     signInWithPopup(auth, provider)
@@ -55,11 +55,11 @@ const useFirebase = () => {
 
 
 
-  useEffect(()=>{
-    fetch(`https://salty-reaches-02915.herokuapp.com/checkAdmin/${user.email}`)
-    .then(res => res.json())
-    .then(data => setAdmin(data.admin))
-},[user.email])
+//   useEffect(()=>{
+//     fetch(`https://salty-reaches-02915.herokuapp.com/checkAdmin/${user.email}`)
+//     .then(res => res.json())
+//     .then(data => setAdmin(data.admin))
+// },[user.email])
 
   const handleLogout = () => {
     setIsLoading(true);
@@ -118,7 +118,7 @@ const useFirebase = () => {
  
   return {
     handleGoogleLogin,
-    admin,
+    // admin,
     handleUserLogin,
     user,
     isLoading,

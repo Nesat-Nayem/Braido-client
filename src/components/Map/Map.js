@@ -8,8 +8,8 @@ mapboxgl.accessToken =
 const Map = () => {
   const mapContainerRef = useRef(null);
 
-  const [lng, setLng] = useState(-87.65);
-  const [lat, setLat] = useState(41.84);
+  const [lng, setLng] = useState(	-77.036560);
+  const [lat, setLat] = useState(38.897957);
   const [zoom, setZoom] = useState(10);
 
   // Initialize map when component mounts
@@ -33,7 +33,7 @@ const Map = () => {
             type: 'geojson',
             data: {
               type: 'FeatureCollection',
-              // features: 'points',
+              features: 'features',
             },
           });
           // Add a symbol layer
