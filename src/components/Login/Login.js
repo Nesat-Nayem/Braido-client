@@ -35,12 +35,12 @@ const handleGoogleLoginMain = () => {
 
   return (
  
-    <div className="login-form mb-5">
+    <div className="login-form mb-5 ">
             <div>
                 <h2>Please Login</h2>
               <form onSubmit={handleSubmit(onSubmit)}>
         <input
-          className="input-field"
+          className="col-4 mb-2"
           name="email"
           placeholder="Email"
           type="email"
@@ -48,7 +48,7 @@ const handleGoogleLoginMain = () => {
         />
         <br />
         <input
-          className="input-field"
+          className="form-group col-4"
           name="password"
           type="password"
           placeholder="Password"

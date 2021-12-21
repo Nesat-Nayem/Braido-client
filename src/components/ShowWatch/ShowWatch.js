@@ -4,7 +4,7 @@ const WatchShow = () => {
     return (
         <div className='container'>
 
-<div className="row row-cols-1 row-cols-md-2 g-4">
+<div className="row row-cols-1 row-cols-md-2 g-4 mb-4">
   <div className="col">
     <div className="card">
     

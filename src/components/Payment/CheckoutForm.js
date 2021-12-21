@@ -14,10 +14,8 @@ const CheckoutForm = ({order}) => {
     const [success,setSuccess] = useState('');
     const [processing, setProcessing] = useState(false);
 
-  
-
     useEffect(()=>{
-      fetch('http://localhost:5000/create-payment-intent', {
+      fetch('https://salty-reaches-02915.herokuapp.com/create-payment-intent', {
         method: 'POST',
         headers:{
           'content-type': 'application/json'

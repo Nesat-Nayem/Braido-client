@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import './Map.css';
-// import geoJson from './chicago-parks.json';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoibmVzYXQ1MzIzNCIsImEiOiJja3hiaDNhYTgyYmI2MnBvNWd6andwYmp2In0.x8Us5hfPG4T53mb4lxQTxg';
@@ -34,7 +33,7 @@ const Map = () => {
             type: 'geojson',
             data: {
               type: 'FeatureCollection',
-            //   features: features,
+              // features: 'points',
             },
           });
           // Add a symbol layer

@@ -24,10 +24,6 @@ const Navbar = () => {
 
                             <Link to="/aboutUs" className="nav-link fw-bold">About</Link>
 
-                          
-
-                            {/* <Link to="/dashboard" className="nav-link fw-bold">Dashbaord</Link> */}
-
                                   <h6 className="mt-2 mx-3"> {user.email} </h6>
                                  
                             { user.email?
@@ -38,7 +34,6 @@ const Navbar = () => {
                                 className="btn btn-warning me-2" >Log-out</button>
                                 </Link> 
                                
-
 
                                 :
                                 <Link to="/login">

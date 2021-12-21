@@ -16,7 +16,7 @@ const Register = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
       
         <input
-          className="input-field"
+          className="col-4 mb-2"
           name="email"
           placeholder="Email"
           type="email"
@@ -24,7 +24,7 @@ const Register = () => {
         />
         <br />
         <input
-          className="input-field"
+          className="col-4"
           name="password"
           type="password"
           placeholder="Password"

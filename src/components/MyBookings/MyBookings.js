@@ -6,7 +6,7 @@ const MyBookings = () => {
   const [books, setBooks] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myOrder/${user?.email}`)
+    fetch(`https://salty-reaches-02915.herokuapp.com/myOrder/${user?.email}`)
       .then((res) => res.json())
       // .then((data) => console.log(data));
       .then((data) => setBooks(data));
@@ -14,7 +14,7 @@ const MyBookings = () => {
 
   const handleDelete = id => {
         
-    fetch(`http://localhost:5000/myOrder/${id}`, {
+    fetch(`https://salty-reaches-02915.herokuapp.com/myOrder/${id}`, {
         method : 'DELETE'
     })
     .then(res => res.json())
@@ -58,16 +58,7 @@ const MyBookings = () => {
                     <button className="btn btn-danger" onClick={()=>handleDelete(book._id)}>delete book</button>
                     
                     </div>
-                   
-                 
-                    {/* <p>{book?.email}</p> */}
-                    
-                    {/* <p>{book?.city}</p> */}
-                    
-                    {/* <p className="m-4">{book?.status}</p> */}
-
-                   
-
+                  
 
                     </div>
                     </div>

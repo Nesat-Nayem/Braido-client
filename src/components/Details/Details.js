@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useForm } from "react-hook-form";
 import useFirebase from "./../../hooks/useFirebase";
+import './Detail.css'
 const Details = () => {
   const [service, setService] = useState({});
   const { user } = useFirebase();
@@ -17,7 +18,7 @@ const Details = () => {
   const onSubmit = (data) => {
     data.email = user?.email;
     // data.status = "pending";
-    fetch("http://localhost:5000/addOrders", {
+    fetch("https://salty-reaches-02915.herokuapp.com/addOrders", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -34,7 +35,7 @@ const Details = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/singleService/${serviceId}`)
+    fetch(`https://salty-reaches-02915.herokuapp.com/singleService/${serviceId}`)
       .then((res) => res.json())
       .then((data) => {
         setService(data)
@@ -50,47 +51,38 @@ const Details = () => {
       <div className="details-container">
         <div className="row container">
           <div className="col-md-6">
-            <img className="w-100" src={service.picture} alt="" />
+            <img className="w-100" src={service.img} alt="" />
             <h4 className="text-start m-3">{service?.name}</h4>
             <h4 className="text-end mb-3"> ${service?.price}</h4>
             <p>{service?.description}</p>
             
             
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 marginb">
             <form onSubmit={handleSubmit(onSubmit)}>
             
               <input 
-              
+              readonly='readonly'
                 {...register("name",{ required: true}) }
                 // placeholder="Name"
                 
                 defaultValue={service?.name}
                 className="p-2 m-2 w-100 input-field"
               />
-
-              {/* <input
-                {...register("email")}
-                placeholder="Email"
-                
-                defaultValue={user?.email}
-                className="p-2 m-2 w-100 input-field"
-              />         */}
-             
             
               <input
            
-              // readonly:true
+              readonly='readonly'
                 {...register("Price",{ required: true})}
-                // placeholder="Price"
+               
                 defaultValue={service?.price}
-                // type="number"
+              
                 className="p-2 m-2 w-100 input-field" 
               />
     
               <input
                 type="submit"
-                value="Order now"
+                value="Conform Add To Cart"
                 className="btn btn-info w-50"
               />
             </form>
