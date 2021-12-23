@@ -1,11 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link, NavLink } from "react-router-dom";
+import { Link} from "react-router-dom";
 import useFirebase from "./../../hooks/useFirebase";
 
 const Register = () => {
-  const { googleSignIn, handleUserRegister } = useFirebase();
-  const { register, handleSubmit, watch, errors } = useForm();
+  const {handleUserRegister } = useFirebase();
+  const { register, handleSubmit} = useForm();
 
   const onSubmit = (data) => {
     handleUserRegister( data.email, data.password);

@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import "./Login.css";
 import { useForm } from "react-hook-form";
 import useFirebase from "./../../hooks/useFirebase";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 const Login = () => {
   const [logInData,setLogInData] = useState({});
   
   const { 
     handleGoogleLogin, 
     handleUserLogin } = useFirebase();
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit} = useForm();
 
   const handleOnChange = e =>{
     const field = e.target.name;

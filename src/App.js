@@ -12,6 +12,7 @@ import Footer from "./components/Footer/Footer";
 import MyBookings from "./components/MyBookings/MyBookings"
 import AboutUs from "./components/AboutUs/AboutUs";
 import Payment from "./components/Payment/Payment";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
           <Route path="/login" element={<Login/>}>       
           </Route>
       
-          <Route path="/services/:serviceId" element={<Details/>}>           
+          <Route path="/services/:serviceId" element={<PrivateRoute> <Details/> </PrivateRoute>}>           
           </Route>
 
           <Route path="/myBookings/:paymentId" element={<Payment/>}>           
