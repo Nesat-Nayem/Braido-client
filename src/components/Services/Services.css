@@ -122,3 +122,7 @@
 	-webkit-transition-delay: 0.2s;
 	transition-delay: 0.2s;
 }
+
+.featured{
+	color: #CBBA9C;
+}

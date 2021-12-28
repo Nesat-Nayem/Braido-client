@@ -5,7 +5,7 @@ const Slider = () => {
     return (
         <div className="header-container mb-5">        
             <SliderMain></SliderMain>
-            <h1 className="text-start color-3 my-5">Choose your Dream watch</h1>
+            {/* <h1 className="text-start color-3 my-5">Choose your Dream watch</h1> */}
         </div>
     );
 };

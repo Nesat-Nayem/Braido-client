@@ -15,6 +15,9 @@ const Services = () => {
      
       <div className="services">
         <div className="row container">
+
+          <h1 className="my-5 fw-bolder "> <span className="featured">FEATURED</span> PRODUCTS</h1>
+
           {services?.map((pd) => (
 
             <div key={pd._id} className="col-md-4 col-lg-4">
