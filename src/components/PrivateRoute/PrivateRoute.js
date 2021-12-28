@@ -1,25 +1,40 @@
 
-import React from 'react';
-import {
-     Navigate,
-      useLocation
-     } from 'react-router-dom';
+// import React from 'react';
+// import {
+//      Navigate,
+//       useLocation
+//      } from 'react-router-dom';
 // import useAuth from '../../hooks/useAuth'
-import useFirebase from '../../hooks/useFirebase';
 
+// const PrivateRoute = ({ children, ...rest }) => {
+//     const { user, isLoading } = useAuth();
+
+//     // console.log(user);
+//     const location = useLocation();
+//     if (isLoading) { return <h1>loading...</h1> }
+//     if (user.email) {
+//         return children;
+//     }
+//     return (
+//         <Navigate to={{ pathname: '/login', state: { from: location } }}></Navigate>
+//     )
+// };
+// export default PrivateRoute;
+
+
+
+import React from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const PrivateRoute = ({ children, ...rest }) => {
-    // const { user, isLoading } = useAuth();
-    const { user, isLoading } = useFirebase();
-
-    console.log(user);
-    const location = useLocation();
-    if (isLoading) { return <h1>loading...</h1> }
+    const { user, isLoading } = useAuth();
+    let location = useLocation();
+    if (isLoading) { return <p>wait...</p> }
     if (user.email) {
         return children;
     }
-    return (
-        <Navigate to={{ pathname: '/login', state: { from: location } }}></Navigate>
-    )
+    return <Navigate to="/login" state={{ from: location }} />;
 };
+
 export default PrivateRoute;

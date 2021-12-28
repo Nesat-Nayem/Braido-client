@@ -13,45 +13,48 @@ import MyBookings from "./components/MyBookings/MyBookings"
 import AboutUs from "./components/AboutUs/AboutUs";
 import Payment from "./components/Payment/Payment";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import AuthProvider from "./context/AuthProvider";
 
 function App() {
   return (
     <div className="App">
+      <AuthProvider>
       <BrowserRouter>  
 
-        <Navbar></Navbar>
+<Navbar></Navbar>
 
-        <Routes>
+<Routes>
 
-          <Route path="/" element={ <Home/>}>     
-          </Route>
+  <Route path="/" element={ <Home/>}>     
+  </Route>
 
-          <Route path="/home" element={<Home/>}>
-          </Route>
+  <Route path="/home" element={<Home/>}>
+  </Route>
 
-          <Route path="/aboutUs" element={<AboutUs/>}>
-          </Route>
+  <Route path="/aboutUs" element={<AboutUs/>}>
+  </Route>
 
-          <Route path="/register" element={<Register/>}>
-        
-          </Route>
-          <Route path="/myBooking" element={<MyBookings/>}>
-          </Route>
-          
-          <Route path="/login" element={<Login/>}>       
-          </Route>
-      
-          <Route path="/services/:serviceId" element={<PrivateRoute> <Details/> </PrivateRoute>}>           
-          </Route>
+  <Route path="/register" element={<Register/>}>
 
-          <Route path="/myBookings/:paymentId" element={<Payment/>}>           
-          </Route>
+  </Route>
+  <Route path="/myBooking" element={<MyBookings/>}>
+  </Route>
+  
+  <Route path="/login" element={<Login/>}>       
+  </Route>
 
-        </Routes>
+  <Route path="/services/:serviceId" element={<PrivateRoute> <Details/> </PrivateRoute>}>           
+  </Route>
 
-        <Footer></Footer>
+  <Route path="/myBookings/:paymentId" element={<Payment/>}>           
+  </Route>
 
-      </BrowserRouter>     
+</Routes>
+
+<Footer></Footer>
+
+</BrowserRouter>  
+        </AuthProvider>   
     </div>
   );
 }

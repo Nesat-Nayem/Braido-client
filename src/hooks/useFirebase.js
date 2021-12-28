@@ -26,9 +26,6 @@ const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [error, setError] = useState("");
-
-  // const [admin, setAdmin] = useState(false);
-
   const handleGoogleLogin = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -52,14 +49,6 @@ const useFirebase = () => {
     });
     return () => unsubscribe
   }, []);
-
-
-
-//   useEffect(()=>{
-//     fetch(`https://salty-reaches-02915.herokuapp.com/checkAdmin/${user.email}`)
-//     .then(res => res.json())
-//     .then(data => setAdmin(data.admin))
-// },[user.email])
 
   const handleLogout = () => {
     setIsLoading(true);
@@ -103,12 +92,12 @@ const useFirebase = () => {
 
   const handleUserLogin = ( email, password) => {
     setIsLoading(true);
-    signInWithEmailAndPassword(auth, email, password)
-      .then((result) => {
-        setUser(result.user)
-        sessionStorage.setItem("email", result.user.email);
-        console.log(result.user);
-      })
+   return signInWithEmailAndPassword(auth, email, password)
+   .then((result) => {
+    setUser(result.user)
+    sessionStorage.setItem("email", result.user.email);
+    console.log(result.user);
+  })
       
       .catch((error) => {
         const errorMessage = error.message;
@@ -118,7 +107,6 @@ const useFirebase = () => {
  
   return {
     handleGoogleLogin,
-    // admin,
     handleUserLogin,
     user,
     isLoading,
@@ -130,3 +118,4 @@ const useFirebase = () => {
 export default useFirebase;
 
 
+ 

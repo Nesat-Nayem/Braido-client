@@ -1,44 +1,37 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { useForm } from "react-hook-form";
-import useFirebase from "./../../hooks/useFirebase";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 const Login = () => {
-  const [logInData,setLogInData] = useState({});
-  
-  const { 
-    handleGoogleLogin, 
-    handleUserLogin } = useFirebase();
-  const { register, handleSubmit} = useForm();
 
-  const handleOnChange = e =>{
-    const field = e.target.name;
-    const value = e.target.value;
-    const newLogInData = {...logInData};
-    newLogInData[field] = value;
-    setLogInData(newLogInData);
+  const location = useLocation();
+  console.log('come here', location.state?.from);
+  const navigate = useNavigate();
+  
+  const onSubmit = (data) => {
+    handleUserLogin(data.email, data.password);
     
   }
+  const { handleUserLogin } = useAuth();
 
-  const handleLogInSubmit = e => {
-    e.preventDefault();
-  }
-const onSubmit = (data) => {
-  handleUserLogin(data.email, data.password)
+  const { register, handleSubmit} = useForm();
 
-}
 
-const handleGoogleLoginMain = () => {
-    handleGoogleLogin()
 
-}
+// const handleOnSubmit = () =>{
+//   onSubmit();
+  
+// }
+
+
 
   return (
  
     <div className="login-form mb-5 ">
             <div>
                 <h2>Please Login</h2>
-              <form onSubmit={handleSubmit(onSubmit)}>
+              <form onSubmit={handleSubmit(onSubmit,location,navigate)}>
         <input
           className="col-4 mb-2"
           name="email"
@@ -66,6 +59,8 @@ const handleGoogleLoginMain = () => {
 
                 <p className="mt-5">New Here? <Link to="/register">Create Account</Link></p>
             </div>
+
+
           
         </div>
   );
