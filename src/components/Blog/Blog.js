@@ -22,7 +22,7 @@ const Blog = () => {
               
                
                 <div className="my-5">
-                <h5 className="text-center">HAPPENINGS AROUND</h5>
+                <p className="text-center">HAPPENINGS AROUND</p>
                 <h1 className="text-center fw-bold my-3">OUR <span style={{ color: '#ff4d30' }}>BLOG</span></h1>
                 </div>
                               
