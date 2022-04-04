@@ -3,10 +3,8 @@ import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
- 
   onAuthStateChanged,
   signOut,
- 
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
@@ -16,10 +14,8 @@ import { useEffect, useState } from "react";
 intializeFirebase();
 
 const useFirebase = () => {
- 
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
- 
 
   const [user, setUser] = useState({});
 
@@ -36,38 +32,35 @@ const useFirebase = () => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, user => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
-       
       } else {
-        setUser({})
+        setUser({});
         // User is signed out
         // ...
       }
       setIsLoading(false);
     });
-    return () => unsubscribe
+    return () => unsubscribe;
   }, []);
 
   const handleLogout = () => {
     setIsLoading(true);
     signOut(auth)
-    
       .then(() => {
         setUser({});
       })
-      
-      
+
       .catch((err) => {
         console.log(err);
       })
-      
+
       .finally(() => setIsLoading(false));
-      sessionStorage.removeItem("email")
+    sessionStorage.removeItem("email");
   };
 
-  const handleUserRegister = ( email, password) => {
+  const handleUserRegister = (email, password) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
@@ -90,21 +83,21 @@ const useFirebase = () => {
       .then((result) => console.log(result));
   };
 
-  const handleUserLogin = ( email, password) => {
+  const handleUserLogin = (email, password) => {
     setIsLoading(true);
-   return signInWithEmailAndPassword(auth, email, password)
-   .then((result) => {
-    setUser(result.user)
-    sessionStorage.setItem("email", result.user.email);
-    console.log(result.user);
-  })
-      
+    return signInWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        setUser(result.user);
+        sessionStorage.setItem("email", result.user.email);
+        console.log(result.user);
+      })
+
       .catch((error) => {
         const errorMessage = error.message;
       })
       .finally(() => setIsLoading(false));
   };
- 
+
   return {
     handleGoogleLogin,
     handleUserLogin,
@@ -116,6 +109,3 @@ const useFirebase = () => {
 };
 
 export default useFirebase;
-
-
- 

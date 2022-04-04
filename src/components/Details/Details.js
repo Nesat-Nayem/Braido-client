@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useForm } from "react-hook-form";
 import useFirebase from "./../../hooks/useFirebase";
-import './Detail.css'
+import "./Detail.css";
 const Details = () => {
   const [service, setService] = useState({});
   const { user } = useFirebase();
@@ -26,23 +26,20 @@ const Details = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.insertedId) {
-          alert('order is Recorded .... got it soon');
-    
+          alert("order is Recorded .... got it soon");
+
           // reset();
-      }
+        }
       });
-    
   };
 
   useEffect(() => {
     fetch(`https://salty-reaches-02915.herokuapp.com/singleService/${serviceId}`)
       .then((res) => res.json())
       .then((data) => {
-        setService(data)
-      // reset(data)
-
+        setService(data);
+        // reset(data)
       });
-     
   }, [serviceId]);
   // }, [serviceId, reset]);
 
@@ -55,31 +52,25 @@ const Details = () => {
             <h4 className="text-start m-3">{service?.name}</h4>
             <h4 className="text-end mb-3"> ${service?.price}</h4>
             <p>{service?.description}</p>
-            
-            
           </div>
           <div className="col-md-6 marginb">
             <form onSubmit={handleSubmit(onSubmit)}>
-            
-              <input 
-              readonly='readonly'
-                {...register("name",{ required: true}) }
+              <input
+                readonly="readonly"
+                {...register("name", { required: true })}
                 // placeholder="Name"
-                
+
                 defaultValue={service?.name}
                 className="p-2 m-2 w-100 input-field"
               />
-            
+
               <input
-           
-              readonly='readonly'
-                {...register("Price",{ required: true})}
-               
+                readonly="readonly"
+                {...register("Price", { required: true })}
                 defaultValue={service?.price}
-              
-                className="p-2 m-2 w-100 input-field" 
+                className="p-2 m-2 w-100 input-field"
               />
-    
+
               <input
                 type="submit"
                 value="Conform Add To Cart"
